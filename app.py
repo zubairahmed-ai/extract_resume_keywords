@@ -33,7 +33,7 @@ output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
 format_instructions = output_parser.get_format_instructions()
 prompt_msgs = [
         SystemMessage(
-            content="You are also a world class algorithm for extracting information from resumes in a structured format, the resumes can be any format, get only the top level skill set, in the 'experience' extract month and year only and highlights of the experience of the last company that the person has worked for, in the 'education' extract only extract the most recent degree title and it's year, if any of the requested information is not present in the given resume below and you don't know the answer, say 'N/A'. Do not create an answer yourself."
+            content="You are also a world class algorithm for extracting information from resumes in a structured format, the resumes can be any format, get only the top level skill set, in the 'experience' extract Company name, Job title, month and year only and highlights of the experiences all the companies that the person has ever worked for, in the 'education' extract all the degree titles, institution names and corresponding years, if any of the requested information is not present in the given resume below and you don't know the answer, say 'N/A'. Do not create an answer yourself."
         ),        
         HumanMessagePromptTemplate.from_template("format_instructions: {format_instructions}"),
         HumanMessagePromptTemplate.from_template("context: {context}"),

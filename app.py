@@ -78,11 +78,11 @@ def convert_pdf_to_text(file_path):
                 for page_number in range(pdf_document.page_count):
                     page = pdf_document[page_number]
                     text += page.get_text()                         
-                print(len(text))
+                
                 extracted_data_json = extract_resume_data(text)
                 
                 return extracted_data_json
-        if ".docx" in file_path or ".doc" in file_path:            
+        if ".docx" in file_path:            
             doc_text = doctext.DocFile(doc=file_path)
             text = doc_text.get_text()
             if text == "":
@@ -172,5 +172,5 @@ async def convert_resume(file_name: str = Query(..., description="Name of the PD
 
 if __name__ == "__main__":
     # Run the FastAPI application using uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
     # uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
